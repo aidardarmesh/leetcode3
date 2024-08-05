@@ -1,15 +1,17 @@
 def minDepth(root):
-    if not root:
-        return 0
+    def find(node):
+        if not node:
+            return 0
+        
+        if not node.left and not node.right:
+            return 1
+        
+        if not node.left:
+            return find(node.right) + 1
+        
+        if not node.right:
+            return find(node.left) + 1
+        
+        return min(find(node.left), find(node.right)) + 1
     
-    if not root.left and not root.right:
-        return 1
-    
-    if not root.left:
-        return self.minDepth(root.right) + 1
-    
-    if not root.right:
-        return self.minDepth(root.left) + 1
-    
-    return min(self.minDepth(root.left), self.minDepth(root.right)) + 1
-
+    return find(root)
