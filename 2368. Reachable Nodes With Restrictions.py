@@ -13,7 +13,7 @@ def reachableNodes(n, edges, restricted):
         seen.add(node)
 
         ans = 1
-        for n in graph[node]
+        for n in graph[node]:
             if not n in seen:
                 ans += dfs(n, graph, seen)
         
