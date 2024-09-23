@@ -8,7 +8,11 @@ def search_rotate_array(nums, target):
         while left <= right:
             mid = (left + right) // 2
 
-            if mid == len(nums)-1 or (mid+1 < len(nums) and nums[mid] < nums[mid+1]):
+            # because we try to find smallest element we pretend that it's placed in mid
+            # then we make a probe: min element should be less than next one and less than the first element
+            # also we accept the edge case when min value is at the last position 
+            # and we have no next element to compare with
+            if (mid+1 < len(nums) and nums[mid] < nums[mid+1] and nums[0] > nums[mid]) or mid == len(nums)-1:
                 ans = mid
                 right = mid - 1
             else:
