@@ -5,7 +5,7 @@ def longest_subsequence_with_limited_sum(nums, queries):
     
     ans = []
 
-    def find_first_greater(nums, target):
+    def find_last_smaller(nums, target):
         left, right = 0, len(nums)-1
         ans = -1
 
@@ -18,9 +18,9 @@ def longest_subsequence_with_limited_sum(nums, queries):
             else:
                 right = mid - 1
         
-        return ans if ans != -1 else len(nums)
+        return ans
     
     for q in queries:
-        ans.append(find_first_greater(nums, q) + 1)
+        ans.append(find_last_smaller(nums, q) + 1)
     
     return ans
