@@ -31,3 +31,6 @@ def total_queens(n):
 
 assert total_queens(1) == 1
 assert total_queens(4) == 2
+
+# TC = O(n!) due to decreasing number of cells to get occupied by queens
+# SC = O(n) because of recursion stack
