@@ -1,27 +1,17 @@
 def combination_sum(candidates, target):
-    from collections import Counter
-
-    ans, seen = [], []
-    curr = []
-
-    def dfs(reminder):
-        if reminder < 0:
+    def backtrack(path, start, curr):
+        if curr == target:
+            ans.append(path[:])
             return
         
-        if reminder == 0:
-            c = Counter(curr)
-            if not c in seen:
-                ans.append(curr[:])
-                seen.append(c)
-            return
-        
-        for num in candidates:
-            curr.append(num)
-            dfs(reminder-num)
-            curr.pop()
+        for i in range(start, len(candidates)):
+            if curr + candidates[i] <= target:
+                path.append(candidates[i])
+                backtrack(path, i, curr + candidates[i])
+                path.pop()
     
-    dfs(target)
-    
+    ans = []
+    backtrack([], 0, 0)
     return ans
 
 
