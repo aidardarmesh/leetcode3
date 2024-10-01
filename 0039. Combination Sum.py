@@ -19,3 +19,5 @@ assert combination_sum([2], 1) == []
 assert combination_sum([2,3,5], 8) == [[2,2,2,2],[2,3,3],[3,5]]
 assert combination_sum([2,3,6,7], 7) == [[2,2,3],[7]]
 
+# TC = O(n ^ (T/M)) where T is target and M = min(candidates)
+# SC = O(T/M) which is longest recursion branch
