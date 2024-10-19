@@ -1,31 +1,11 @@
 def inoder_successor(root, p):
-    nodes = []
-    val_node_mapper = {}
+    successor = None
 
-    def dfs(node):
-        if not node:
-            return
-        
-        val_node_mapper[node.val] = node
-        dfs(node.left)
-        dfs(node.right)
+    while root:
+        if p.val >= root.val:
+            root = root.right
+        else:
+            successor = root
+            root = root.left
     
-    dfs(root)
-
-    def inorder(node):
-        if not node:
-            return
-        
-        inorder(node.left)
-        nodes.append(node.val)
-        inorder(node.right)
-    
-    inorder(root)
-    
-    i = nodes.index(p.val)
-    
-    if i == len(nodes)-1:
-        return None
-    
-    return val_node_mapper[nodes[i+1]]
-
+    return successor
